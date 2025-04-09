@@ -1,71 +1,45 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import './Navbar.scss';
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      const offset = window.scrollY;
-      if (offset > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 50);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleClick = (e, id) => {
-    e.preventDefault();
-    const element = document.getElementById(id);
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   return (
     <motion.nav
-      className={`navbar ${scrolled ? 'scrolled' : ''}`}
+      className={`fixed w-full z-50 py-6 transition-all duration-300 ${
+        scrolled ? 'bg-[#0a192f]/90 shadow-lg backdrop-blur-sm' : 'bg-transparent'
+      }`}
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="navbar-content">
+      <div className="container mx-auto px-8 flex justify-between items-center">
         <motion.div
-          className="logo"
+          className="text-3xl font-bold cursor-pointer"
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={(e) => handleClick(e, 'home')}
         >
-          Portfolio<span className=" text-[#dd4e8a] "></span>
+          <span className="text-white">Port</span>
+          <span className="text-[#9D4EDD]">folio</span>
         </motion.div>
-        <ul className="nav-links">
-          <motion.li whileHover={{ y: -2 }}>
-            <a href="#home" onClick={(e) => handleClick(e, 'home')}>Home</a>
-          </motion.li>
-          <motion.li whileHover={{ y: -2 }}>
-            <a href="#about" onClick={(e) => handleClick(e, 'about')}>About</a>
-          </motion.li>
-          <motion.li whileHover={{ y: -2 }}>
-            <a href="#projects" onClick={(e) => handleClick(e, 'projects')}>Projects</a>
-          </motion.li>
-          <motion.li whileHover={{ y: -2 }}>
-            <a href="#skills" onClick={(e) => handleClick(e, 'skills')}>Skills</a>
-          </motion.li>
-          <motion.li whileHover={{ y: -2 }}>
-            <a href="#contact" onClick={(e) => handleClick(e, 'contact')}>Contact</a>
-          </motion.li>
+        <ul className="hidden md:flex space-x-10">
+          {['Home', 'About', 'Projects', 'Skills', 'Contact'].map((item) => (
+            <motion.li
+              key={item}
+              className="text-lg font-medium text-gray-300 hover:text-[#9D4EDD] cursor-pointer transition-colors duration-300"
+              whileHover={{ y: -2 }}
+            >
+              <a href={`#${item.toLowerCase()}`}>{item}</a>
+            </motion.li>
+          ))}
         </ul>
       </div>
     </motion.nav>

@@ -27,75 +27,100 @@ const Contact = () => {
   };
 
   return (
-    <div id="contact" className="min-h-screen bg-[#0a192f] py-20">
+    <div id="contact" className="min-h-screen bg-gradient-to-b from-[#0a192f] to-[#112240] py-32">
       <div className="container mx-auto px-8">
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1 }}
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
           className="max-w-6xl mx-auto"
         >
-          <h2 className="text-5xl font-bold text-center text-white mb-16">Contact.</h2>
-          
+          <motion.h2 
+            className="text-6xl font-bold text-center mb-4"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+          >
+            <span className="text-white">Get in </span>
+            <span className="text-[#9D4EDD]">Touch</span>
+            <span className="text-white">.</span>
+          </motion.h2>
+
+          <motion.p 
+            className="text-gray-400 text-center mb-16 text-lg"
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.2 }}
+          >
+            Feel free to reach out for collaborations or just a friendly hello
+          </motion.p>
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-            {/* Contact Info */}
-            <div className="space-y-8">
-              <h3 className="text-2xl font-semibold text-white mb-6">Get in Touch</h3>
+            <motion.div 
+              className="space-y-8 bg-[#112240]/50 p-8 rounded-2xl border border-[#9D4EDD]/20 backdrop-blur-sm"
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+            >
+              <h3 className="text-3xl font-semibold text-white mb-8">Contact Info</h3>
               
-              {/* Add Resume Download Button */}
               <motion.button
                 onClick={handleDownloadResume}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{ scale: 1.05, boxShadow: '0 0 20px rgba(157, 78, 221, 0.3)' }}
                 whileTap={{ scale: 0.95 }}
-                className="flex items-center gap-2 bg-[#9D4EDD] text-white px-6 py-3 rounded-lg hover:bg-[#9D4EDD]/90 transition-colors"
+                className="flex items-center gap-3 bg-gradient-to-r from-[#9D4EDD] to-[#7B2CBF] text-white px-6 py-3 rounded-lg transition-all duration-300"
               >
                 <FaDownload className="text-lg" />
                 Download Resume
               </motion.button>
 
-              <div className="flex items-center space-x-4">
-                <FaEnvelope className="text-purple-custom text-xl" />
-                <a href="mailto:your.email@example.com" className="text-slate-light hover:text-white transition-colors">
-                  junejag51@gmail.com
-                </a>
+              <div className="space-y-6">
+                <motion.a 
+                  href="mailto:junejag51@gmail.com"
+                  className="flex items-center space-x-4 text-gray-300 hover:text-[#9D4EDD] transition-colors duration-300"
+                  whileHover={{ x: 10 }}
+                >
+                  <FaEnvelope className="text-[#9D4EDD] text-2xl" />
+                  <span>junejag51@gmail.com</span>
+                </motion.a>
+                
+                <motion.a 
+                  href="tel:+919518013430"
+                  className="flex items-center space-x-4 text-gray-300 hover:text-[#9D4EDD] transition-colors duration-300"
+                  whileHover={{ x: 10 }}
+                >
+                  <FaPhone className="text-[#9D4EDD] text-2xl" />
+                  <span>+91 9518013430</span>
+                </motion.a>
               </div>
               
-              <div className="flex items-center space-x-4">
-                <FaPhone className="text-purple-custom text-xl" />
-                <a href="tel:+1234567890" className="text-slate-light hover:text-white transition-colors">
-              +91 9518013430
-                </a>
-              </div>
-              
-              <div className="flex space-x-6 pt-4">
+              <div className="flex space-x-6 pt-6">
                 <motion.a
-                  whileHover={{ y: -3 }}
+                  whileHover={{ y: -5, color: '#9D4EDD' }}
                   href="https://www.linkedin.com/in/garima-juneja-598056268/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-light hover:text-purple-custom transition-colors"
+                  className="text-gray-300 text-3xl transition-colors duration-300"
                 >
-                  <FaLinkedin size={24} />
+                  <FaLinkedin />
                 </motion.a>
                 <motion.a
-                  whileHover={{ y: -3 }}
+                  whileHover={{ y: -5, color: '#9D4EDD' }}
                   href="https://github.com/Garimajunejaa"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-slate-light hover:text-purple-custom transition-colors"
+                  className="text-gray-300 text-3xl transition-colors duration-300"
                 >
-                  <FaGithub size={24} />
+                  <FaGithub />
                 </motion.a>
               </div>
-            </div>
+            </motion.div>
 
-            {/* Contact Form */}
             <motion.form
-              initial={{ opacity: 0, x: 20 }}
+              initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              transition={{ duration: 0.5 }}
               onSubmit={handleSubmit}
-              className="space-y-6"
+              className="space-y-6 bg-[#112240]/50 p-8 rounded-2xl border border-[#9D4EDD]/20 backdrop-blur-sm"
             >
               <div>
                 <input
@@ -103,7 +128,7 @@ const Contact = () => {
                   placeholder="Your Name"
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  className="w-full bg-navy-light text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-custom"
+                  className="w-full bg-[#0a192f]/70 text-white px-6 py-4 rounded-lg border border-[#9D4EDD]/30 focus:border-[#9D4EDD] focus:outline-none transition-all duration-300"
                   required
                 />
               </div>
@@ -114,7 +139,7 @@ const Contact = () => {
                   placeholder="Your Email"
                   value={formData.email}
                   onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  className="w-full bg-navy-light text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-custom"
+                  className="w-full bg-[#0a192f]/70 text-white px-6 py-4 rounded-lg border border-[#9D4EDD]/30 focus:border-[#9D4EDD] focus:outline-none transition-all duration-300"
                   required
                 />
               </div>
@@ -125,16 +150,16 @@ const Contact = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   rows="5"
-                  className="w-full bg-navy-light text-white px-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-custom resize-none"
+                  className="w-full bg-[#0a192f]/70 text-white px-6 py-4 rounded-lg border border-[#9D4EDD]/30 focus:border-[#9D4EDD] focus:outline-none transition-all duration-300 resize-none"
                   required
                 ></textarea>
               </div>
               
               <motion.button
-                whileHover={{ scale: 1.02 }}
+                whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(157, 78, 221, 0.3)' }}
                 whileTap={{ scale: 0.98 }}
                 type="submit"
-                className="w-full bg-purple-custom text-white py-3 rounded-lg font-semibold hover:bg-purple-custom/90 transition-colors"
+                className="w-full bg-gradient-to-r from-[#9D4EDD] to-[#7B2CBF] text-white py-4 rounded-lg font-semibold transition-all duration-300"
               >
                 Send Message
               </motion.button>

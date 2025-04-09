@@ -46,42 +46,67 @@ const Experience = () => {
   ];
 
   return (
-    <div className="bg-navy py-20">
-      <div className="container mx-auto px-4">
+    <div className="min-h-screen bg-gradient-to-b from-[#0a192f] to-[#112240] py-32">
+      <div className="container mx-auto px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-5xl mx-auto"
         >
-          <h2 className="text-5xl font-bold text-center text-white mb-16">Experience.</h2>
+          <motion.h2 
+            className="text-6xl font-bold text-center mb-20"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+          >
+            <span className="text-white">Experience</span>
+            <span className="text-[#9D4EDD]">.</span>
+          </motion.h2>
           
-          <div className="max-w-4xl mx-auto">
+          <div className="space-y-12">
             {experiences.map((exp, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, x: -20 }}
+                initial={{ opacity: 0, x: -50 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 transition={{ delay: index * 0.2 }}
-                className="mb-12 relative pl-8"
+                className="relative pl-12 md:pl-16"
               >
-                <div className="absolute left-0 top-0 h-full w-px bg-purple-custom">
-                  <div className="absolute top-0 -left-2 w-5 h-5 rounded-full bg-purple-custom" />
+                {/* Timeline line and dot */}
+                <div className="absolute left-0 top-0 h-full w-[2px] bg-gradient-to-b from-[#9D4EDD] to-[#7B2CBF]">
+                  <motion.div 
+                    className="absolute -left-[10px] w-[22px] h-[22px] rounded-full bg-[#9D4EDD] border-4 border-[#0a192f]"
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    transition={{ delay: index * 0.2 + 0.2 }}
+                  />
                 </div>
                 
-                <div className="bg-navy-light p-6 rounded-lg">
-                  <span className="text-purple-custom font-medium">{exp.period}</span>
+                <motion.div 
+                  className="bg-[#112240]/80 p-8 rounded-2xl border border-[#9D4EDD]/20 backdrop-blur-sm hover:border-[#9D4EDD]/40 transition-all duration-300"
+                  whileHover={{ scale: 1.02, boxShadow: '0 0 20px rgba(157, 78, 221, 0.2)' }}
+                >
+                  <span className="text-[#9D4EDD] font-medium text-lg">{exp.period}</span>
                   <h3 className="text-2xl font-bold text-white mt-2">{exp.title}</h3>
-                  <p className="text-slate-light mt-2">{exp.tech}</p>
+                  <div className="inline-block px-4 py-1 rounded-full bg-[#9D4EDD]/10 border border-[#9D4EDD]/30 text-[#9D4EDD] text-sm mt-3">
+                    {exp.tech}
+                  </div>
                   
-                  <ul className="mt-4 space-y-2">
+                  <ul className="mt-6 space-y-3">
                     {exp.points.map((point, idx) => (
-                      <li key={idx} className="text-slate-light flex items-start">
-                        <span className="text-purple-custom mr-2">•</span>
-                        {point}
-                      </li>
+                      <motion.li 
+                        key={idx} 
+                        className="text-gray-300 flex items-start gap-3"
+                        initial={{ opacity: 0, x: -20 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.2 + idx * 0.1 }}
+                      >
+                        <span className="text-[#9D4EDD] text-xl">•</span>
+                        <span className="leading-relaxed">{point}</span>
+                      </motion.li>
                     ))}
                   </ul>
-                </div>
+                </motion.div>
               </motion.div>
             ))}
           </div>

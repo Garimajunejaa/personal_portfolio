@@ -1,21 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { 
-  FaHtml5, 
-  FaCss3Alt, 
-  FaJs, 
-  FaReact, 
-  FaNodeJs, 
-  FaGithub, 
-  FaJava,
-  FaGit 
+  FaHtml5, FaCss3Alt, FaJs, FaReact, 
+  FaNodeJs, FaGithub, FaJava, FaGit 
 } from 'react-icons/fa';
 import { 
-  SiMongodb, 
-  SiPostman, 
-  SiVisualstudiocode,
-  SiSpringboot,
-  SiMysql 
+  SiMongodb, SiPostman, SiVisualstudiocode,
+  SiSpringboot, SiMysql 
 } from 'react-icons/si';
 
 const Skills = () => {
@@ -40,47 +31,61 @@ const Skills = () => {
   ];
 
   return (
-    <div id="skills" className="bg-navy py-20">
-      <div className="container mx-auto px-4">
+    <div id="skills" className="min-h-screen bg-[#0a192f] py-20">
+      <div className="container mx-auto px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
+          className="max-w-6xl mx-auto"
         >
-          <h2 className="text-5xl font-bold text-center text-white mb-16">Skills.</h2>
+          <h2 className="text-5xl font-bold text-center mb-16">
+            <span className="text-white">Skills</span>
+            <span className="text-[#9D4EDD]">.</span>
+          </h2>
           
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+          <div className="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {skills.map((skill, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="flex flex-col items-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: '0 0 20px rgba(157, 78, 221, 0.2)'
+                }}
+                className="flex flex-col items-center p-4 bg-[#112240] rounded-lg border border-[#1a2f52] hover:border-[#9D4EDD] transition-all duration-300"
               >
-                <div className="text-5xl mb-2">{skill.icon}</div>
-                <p className="text-slate-light text-sm">{skill.name}</p>
+                <div className="text-4xl mb-2">{skill.icon}</div>
+                <p className="text-gray-300 text-sm font-medium text-center">{skill.name}</p>
               </motion.div>
             ))}
           </div>
 
-          <h3 className="text-2xl font-bold text-white mt-16 mb-8 text-center">
+          <motion.h3 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            className="text-2xl font-bold text-white mt-16 mb-8 text-center"
+          >
             Tools and Software
-          </h3>
+          </motion.h3>
 
-          <div className="flex justify-center gap-8">
+          <div className="flex justify-center gap-6">
             {tools.map((tool, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, scale: 0.5 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="flex flex-col items-center"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.05 }}
+                whileHover={{ 
+                  scale: 1.05,
+                  boxShadow: '0 0 20px rgba(157, 78, 221, 0.2)'
+                }}
+                className="flex flex-col items-center p-4 bg-[#112240] rounded-lg border border-[#1a2f52] hover:border-[#9D4EDD] transition-all duration-300"
               >
-                <div className="text-5xl mb-2">{tool.icon}</div>
-                <p className="text-slate-light text-sm">{tool.name}</p>
+                <div className="text-4xl mb-2">{tool.icon}</div>
+                <p className="text-gray-300 text-sm font-medium">{tool.name}</p>
               </motion.div>
             ))}
           </div>

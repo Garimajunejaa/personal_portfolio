@@ -4,8 +4,8 @@ import { FaGithub, FaLinkedin } from 'react-icons/fa';
 
 const Hero = () => {
   return (
-    <div id="home" className="min-h-screen relative overflow-hidden">
-      {/* Enhanced Background */}
+    <div id="home" className="min-h-screen relative overflow-hidden pt-24"> {/* Added pt-24 for top padding */}
+      {/* Background elements remain the same */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a192f] via-[#0f172a] to-[#0a192f]" />
         <div className="absolute inset-0 opacity-30"
@@ -19,7 +19,7 @@ const Hero = () => {
         />
       </div>
 
-      <div className="container mx-auto px-8 md:px-12 lg:px-16 py-32 relative z-10">
+      <div className="container mx-auto px-8 md:px-12 lg:px-16 pt-16 pb-32 relative z-10"> {/* Adjusted pt-16 */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0, y: 20 }}
