@@ -16,7 +16,7 @@ const Projects = () => {
       title: "GuildHub",
       description: "Contributed to 'GuildHub,' a social media platform for gamers, as part of a group project. Developed the 'Local Events' page using React.js, enabling users to discover and engage with gaming events in their area. Implemented interactive UI components and optimized performance for a seamless user experience.",
       technologies: ["Flutter", "Dart", "Firebase", "React.js"],
-      github: "https://github.com/Garimajunejaa/guildhub",
+      github: "https://github.com/Garimajunejaa/Guildhubb",
       live: "#",
       image: "/guildhub.png"
     },
