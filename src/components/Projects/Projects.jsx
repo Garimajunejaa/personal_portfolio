@@ -24,7 +24,7 @@ const Projects = () => {
       title: "Job Portal",
       description: "A comprehensive job portal with separate interfaces for students and recruiters. Features include job listings, application tracking, and admin dashboard for platform management.",
       technologies: ["React", "Node.js", "MongoDB", "Express.js"],
-      github: "https://github.com/Garimajunejaa/JobPortal",
+      github: "https://github.com/Garimajunejaa/jobportall",
       live: "https://jobportall-ex99.onrender.com",
       image: "/jobportal.png"
     },
