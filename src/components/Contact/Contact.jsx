@@ -17,10 +17,10 @@ const Contact = () => {
   };
 
   const handleDownloadResume = () => {
-    const resumeUrl = '/GarimaJuneja_Resume.pdf'; // Make sure this file exists in your public folder
+    const resumeUrl = '/GarimaJuneja__CV.pdf'; // Make sure this file exists in your public folder
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.download = 'GarimaJuneja_Resume.pdf';
+    link.download = 'GarimaJuneja__CV.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
