@@ -80,7 +80,7 @@ const Hero = () => {
               />
               <div className="relative rounded-full overflow-hidden border-2 border-[#9D4EDD]/20">
                 <img 
-                  src="/grima.jpg" 
+                  src="/picture.jpg" 
                   alt="Garima Juneja" 
                   className="w-full h-full object-cover"
                   style={{ 
